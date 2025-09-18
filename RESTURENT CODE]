@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -199,7 +199,7 @@
             line-height: 1.8;
         }
 
-        /* Special Offers */
+       
         .special-offers {
             background: linear-gradient(to right, #2c3e50, #4a6491);
             color: white;
@@ -437,7 +437,7 @@
             align-items: center;
         }
 
-        /* Footer */
+        
         footer {
             background: #2c3e50;
             color: white;
