@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Garden - Multi-Cuisine Restaurant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fff8f0;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .logo span {
+            color: #f9c922;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            color: #f9c922;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            color: #f9c922;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: #e74c3c;
+            bottom: -10px;
+            left: 20%;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        /* Special Offers */
+        .special-offers {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .special-offers h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #f9c922;
+        }
+
+        .offers-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .offer-card {
+            background: white;
+            color: #333;
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .offer-card h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .offer-card p {
+            margin-bottom: 15px;
+        }
+
+        .offer-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* Menu Card */
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background: #eee;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .menu-item h3 {
+            font-size: 20px;
+            color: #2c3e50;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .category-label {
+            display: inline-block;
+            background: #f9c922;
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .cuisine-section {
+            margin-bottom: 60px;
+        }
+
+        .cuisine-header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 32px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            display: inline-block;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            color: #f9c922;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .contact-details {
+            margin-bottom: 25px;
+        }
+
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            color: #f9c922;
+            width: 20px;
+        }
+
+        .login-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #e74c3c;
+            outline: none;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #f9c922;
+        }
+
+        .footer-contact span {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #f9c922;
+        }
+
+        .footer-social {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #f9c922;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .menu-filters {
+                flex-wrap: wrap;
+            }
+            
+            .filter-btn {
+                margin-bottom: 10px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+            
+            .cuisine-header {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container header-content">
+            <div class="logo">Spice<span>Garden</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#specials">Specials</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                     <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+  
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div>
+                <h1>Experience Multi-Cuisine Delights</h1>
+                <p>Indulge in our exquisite culinary creations from around the world prepared by our master chefs</p>
+                <a href="#menu" class="btn">Explore Our Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Discover the story behind Spice Garden</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fHJlc3RhdXJhbnQlMkMlMjBpbnRlcmlvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="Restaurant Interior">
+                </div>
+                <div class="about-text">
+                    <h3>Our Culinary Journey</h3>
+                    <p>Spice Garden was founded in 2010 with a mission to bring authentic flavors from across India and beyond to Sultanpur. Our chefs are passionate about creating dishes that honor traditional recipes while adding their own creative touches.</p>
+                    <p>We take pride in using fresh, locally-sourced ingredients and preparing everything from scratch daily. Our menu features a diverse selection of dishes from various regions of India as well as popular Chinese favorites.</p>
+                    <p>Whether you're craving spicy curries, flavorful biryanis, or savory street food, we have something to satisfy every palate at affordable prices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="specials" class="special-offers">
+        <div class="container">
+            <h2>Today's Specials</h2>
+            <div class="offers-container">
+                <div class="offer-card">
+                    <h3>Family Feast</h3>
+                    <p>2 Main Courses + 2 Breads + 1 Rice + 1 Dessert</p>
+                    <p class="offer-price">₹799</p>
+                </div>
+                <div class="offer-card">
+                    <h3>Lunch Combo</h3>
+                    <p>1 Main Course + 1 Bread + 1 Rice + 1 Drink</p>
+                    <p class="offer-price">₹299</p>
+                </div>
+                <div class="offer-card">
+                    <h3>Date Night Special</h3>
+                    <p>3 Course Meal with 2 Mocktails</p>
+                    <p class="offer-price">₹899</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Multi-Cuisine Menu</h2>
+                <p>Delicious dishes from around the world made with the finest ingredients</p>
+            </div>
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="south-indian">South Indian</button>
+                <button class="filter-btn" data-filter="north-indian">North Indian</button>
+                <button class="filter-btn" data-filter="chinese">Chinese</button>
+                <button class="filter-btn" data-filter="starters">Starters</button>
+                <button class="filter-btn" data-filter="desserts">Desserts</button>
+                <button class="filter-btn" data-filter="drinks">Drinks</button>
+                <button class="filter-btn" data-filter="special">Special</button>
+            </div>
+            
+            
+            <div class="cuisine-section">
+                <h3 class="cuisine-header">South Indian Specialties</h3>
+                <div class="menu-items">
+                    <div class="menu-item" data-category="south-indian">
+                        <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRvc2F8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Masala Dosa">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Masala Dosa</h3>
+                                <span class="price">₹120</span>
+                            </div>
+                            <p>Crispy fermented crepe with spiced potato filling</p>
+                            <span class="category-label">South Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="south-indian">
+                        <img src="ID.jpg" alt="ID">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Idli Sambhar</h3>
+                                <span class="price">₹80</span>
+                            </div>
+                            <p>Steamed rice cakes served with lentil soup and chutney</p>
+                            <span class="category-label">South Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="south-indian">
+                        <img src="vada.jpg" alt="Vada">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Sambhar Vada</h3>
+                                <span class="price">₹90</span>
+                            </div>
+                            <p>Lentil donuts served with sambhar and chutney</p>
+                            <span class="category-label">South Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="south-indian">
+                        <img src="Uttapam.jpg" alt="Uttapam">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Uttapam</h3>
+                                <span class="price">₹110</span>
+                            </div>
+                            <p>Savory pancake with tomatoes, onion, and spices</p>
+                            <span class="category-label">South Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="south-indian">
+                        <img src="rava dosa.jpg" alt="Rava Dosa">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Rava Masala Dosa</h3>
+                                <span class="price">₹140</span>
+                            </div>
+                            <p>Crispy semolina crepe with spiced potato filling</p>
+                            <span class="category-label">South Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="south-indian">
+                        <img src="ven.jpg" alt="Pongal">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Ven Pongal</h3>
+                                <span class="price">₹100</span>
+                            </div>
+                            <p>Savory rice and lentil dish with ghee and spices</p>
+                            <span class="category-label">South Indian</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="cuisine-section">
+                <h3 class="cuisine-header">North Indian Delicacies</h3>
+                <div class="menu-items">
+                    <div class="menu-item" data-category="north-indian">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDd8fGJ1dHRlciUyMGNoaWNrZW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Butter Chicken">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Butter Chicken</h3>
+                                <span class="price">₹220</span>
+                            </div>
+                            <p>Tender chicken in creamy tomato and butter sauce</p>
+                            <span class="category-label">North Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="north-indian">
+                        <img src="Paneer Tikka.jpg" alt="Paneer Tikka">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Paneer Tikka</h3>
+                                <span class="price">₹180</span>
+                            </div>
+                            <p>Grilled cottage cheese chunks with spices and herbs</p>
+                            <span class="category-label">North Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="north-indian">
+                        <img src="N.jpg" alt="Naan">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Butter Naan</h3>
+                                <span class="price">₹50</span>
+                            </div>
+                            <p>Soft leavened bread brushed with butter</p>
+                            <span class="category-label">North Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="north-indian">
+                        <img src="Chicken Biryani.jpg" alt="Biryani">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Chicken Biryani</h3>
+                                <span class="price">₹200</span>
+                            </div>
+                            <p>Fragrant rice cooked with chicken and spices</p>
+                            <span class="category-label">North Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="north-indian">
+                        <img src="paneer.jpg" alt="Paneer Butter Masala">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Paneer Butter Masala</h3>
+                                <span class="price">₹190</span>
+                            </div>
+                            <p>Cottage cheese in rich tomato and butter gravy</p>
+                            <span class="category-label">North Indian</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="north-indian">
+                        <img src="dal.jpg" alt="Dal Makhani">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Dal Makhani</h3>
+                                <span class="price">₹150</span>
+                            </div>
+                            <p>Creamy black lentils simmered with spices</p>
+                            <span class="category-label">North Indian</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cuisine-section">
+                <h3 class="cuisine-header">Chinese Favorites</h3>
+                <div class="menu-items">
+                    <div class="menu-item" data-category="chinese">
+                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2hpbmVzZSUyMGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="Hakka Noodles">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Hakka Noodles</h3>
+                                <span class="price">₹130</span>
+                            </div>
+                            <p>Stir-fried noodles with vegetables in authentic Chinese style</p>
+                            <span class="category-label">Chinese</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="chinese">
+                        <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG1hbmNodXJpYW4lMjBjaGlja2VufGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60" alt="Manchurian">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Veg Manchurian</h3>
+                                <span class="price">₹150</span>
+                            </div>
+                            <p>Vegetable balls in spicy tangy Manchurian sauce</p>
+                            <span class="category-label">Chinese</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="chinese">
+                        <img src="spring roll.jpg" alt="Spring Rolls">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Spring Rolls</h3>
+                                <span class="price">₹120</span>
+                            </div>
+                            <p>Crispy rolls filled with vegetables and served with sauce</p>
+                            <span class="category-label">Chinese</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="chinese">
+                        <img src="rice.jpg" alt="Fried Rice">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Vegetable Fried Rice</h3>
+                                <span class="price">₹110</span>
+                            </div>
+                            <p>Stir-fried rice with mixed vegetables and sauces</p>
+                            <span class="category-label">Chinese</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="chinese">
+                        <img src="chicken.jpg" alt="Chili Chicken">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Chili Chicken</h3>
+                                <span class="price">₹180</span>
+                            </div>
+                            <p>Spicy chicken stir-fry with onions and peppers</p>
+                            <span class="category-label">Chinese</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="chinese">
+                        <img src="nodle.webp" alt="Schezwan Noodles">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Schezwan Noodles</h3>
+                                <span class="price">₹140</span>
+                            </div>
+                            <p>Spicy noodles with Schezwan sauce and vegetables</p>
+                            <span class="category-label">Chinese</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cuisine-section">
+                <h3 class="cuisine-header">Appetizers & Starters</h3>
+                <div class="menu-items">
+                    <div class="menu-item" data-category="starters">
+                        <img src="sup.webp" alt="Soup">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Hot & Sour Soup</h3>
+                                <span class="price">₹90</span>
+                            </div>
+                            <p>Spicy and tangy soup with vegetables and tofu</p>
+                            <span class="category-label">Starter</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="starters">
+                        <img src="samosa.webp" alt="Samosa">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Samosa (2 pcs)</h3>
+                                <span class="price">₹60</span>
+                            </div>
+                            <p>Crispy pastry filled with spiced potatoes and peas</p>
+                            <span class="category-label">Starter</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="starters">
+                        <img src="vegetable-pakoras.jpg" alt="Pakora">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Vegetable Pakora</h3>
+                                <span class="price">₹80</span>
+                            </div>
+                            <p>Assorted vegetables dipped in chickpea batter and fried</p>
+                            <span class="category-label">Starter</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="starters">
+                        <img src="tikka.jpg" alt="Tikka">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Paneer Tikka</h3>
+                                <span class="price">₹160</span>
+                            </div>
+                            <p>Marinated cottage cheese grilled to perfection</p>
+                            <span class="category-label">Starter</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="starters">
+                        <img src="chicken tikka.jpg" alt="Chicken Tikka">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Chicken Tikka</h3>
+                                <span class="price">₹190</span>
+                            </div>
+                            <p>Marinated chicken pieces grilled in tandoor</p>
+                            <span class="category-label">Starter</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="starters">
+                        <img src="lollipops.webp" alt="Chicken Lollipop">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Chicken Lollipop</h3>
+                                <span class="price">₹210</span>
+                            </div>
+                            <p>Spicy appetizer made with chicken wings</p>
+                            <span class="category-label">Starter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           
+            <div class="cuisine-section">
+                <h3 class="cuisine-header">Sweet Endings</h3>
+                <div class="menu-items">
+                    <div class="menu-item" data-category="desserts">
+                        <img src="cake.jpg" alt="Chocolate Cake">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Chocolate Lava Cake</h3>
+                                <span class="price">₹120</span>
+                            </div>
+                            <p>Warm chocolate cake with a molten center</p>
+                            <span class="category-label">Dessert</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="desserts">
+                        <img src="jamun.webp" alt="Gulab Jamun">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Gulab Jamun </h3>
+                                <span class="price">₹40</span>
+                            </div>
+                            <p>Soft milk balls soaked in sweet rose-flavored syrup</p>
+                            <span class="category-label">Dessert</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="desserts">
+                        <img src="JB.jpg" alt="Jalebi">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Jalebi (5 pcs)</h3>
+                                <span class="price">₹70</span>
+                            </div>
+                            <p>Crispy swirls soaked in sugar syrup</p>
+                            <span class="category-label">Dessert</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="desserts">
+                        <img src="KajuKatli.webp" alt="Kaju Katli">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Kaju Katli (5 pcs)</h3>
+                                <span class="price">₹100</span>
+                            </div>
+                            <p>Cashew fudge with silver leaf garnish</p>
+                            <span class="category-label">Dessert</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="desserts">
+                        <img src="kulfi.jpg" alt="Ice Cream">   
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Kulfi (2 pcs)</h3>
+                                <span class="price">₹90</span>
+                            </div>
+                            <p>Traditional Indian ice cream with nuts</p>
+                            <span class="category-label">Dessert</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="desserts">
+                        <img src="rm.jpg" alt="Rasmalai">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Rasmalai (2 pcs)</h3>
+                                <span class="price">₹110</span>
+                            </div>
+                            <p>Soft cheese patties in sweetened milk</p>
+                            <span class="category-label">Dessert</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="cuisine-section">
+                <h3 class="cuisine-header">Refreshing Drinks</h3>
+                <div class="menu-items">
+                    <div class="menu-item" data-category="drinks">
+                        <img src="FT.jpg" alt="Cocktail">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Signature Cocktail</h3>
+                                <span class="price">₹180</span>
+                            </div>
+                            <p>Our special mix of premium spirits with fresh fruits</p>
+                            <span class="category-label">Drink</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="drinks">
+                        <img src="mgl.jpg" alt="Lassi">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Mango Lassi</h3>
+                                <span class="price">₹70</span>
+                            </div>
+                            <p>Refreshing yogurt drink with mango pulp</p>
+                            <span class="category-label">Drink</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="drinks">
+                        <img src="mt.webp" alt="Mocktail">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Tropical Mocktail</h3>
+                                <span class="price">₹120</span>
+                            </div>
+                            <p>Refreshing blend of tropical fruits</p>
+                            <span class="category-label">Drink</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="drinks">
+                        <img src="FC.jpg" alt="Coffee">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Filter Coffee</h3>
+                                <span class="price">₹50</span>
+                            </div>
+                            <p>Traditional South Indian filter coffee</p>
+                            <span class="category-label">Drink</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="drinks">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHRlYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="Tea">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Masala Chai</h3>
+                                <span class="price">₹40</span>
+                            </div>
+                            <p>Spiced tea with milk and aromatic spices</p>
+                            <span class="category-label">Drink</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="drinks">
+                        <img src="FRESH.jpg" alt="Juice">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Fresh Juice</h3>
+                                <span class="price">₹80</span>
+                            </div>
+                            <p>Seasonal fresh fruit juice</p>
+                            <span class="category-label">Drink</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="cuisine-section">
+                <h3 class="cuisine-header">Chef's Specials</h3>
+                <div class="menu-items">
+                    <div class="menu-item" data-category="special">
+                        <img src="SPDOSA.png" alt="Special Dosa">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Spice Garden Special Dosa</h3>
+                                <span class="price">₹180</span>
+                            </div>
+                            <p>Extra large dosa with special potato masala and chutneys</p>
+                            <span class="category-label">Special</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="special">
+                        <img src="HB.webp" alt="Special Biryani">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Hyderabadi Biryani</h3>
+                                <span class="price">₹250</span>
+                            </div>
+                            <p>Aromatic basmati rice with marinated chicken and spices</p>
+                            <span class="category-label">Special</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="special">
+                        <img src="Paneer-Butter-Masala-10.jpg" alt="Special Curry">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Paneer Butter Masala</h3>
+                                <span class="price">₹210</span>
+                            </div>
+                            <p>Cottage cheese in rich tomato and butter gravy</p>
+                            <span class="category-label">Special</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="special">
+                        <img src="TCS.jpg" alt="Special Chicken">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Tandoori Chicken</h3>
+                                <span class="price">₹280</span>
+                            </div>
+                            <p>Chicken marinated in yogurt and spices, grilled in tandoor</p>
+                            <span class="category-label">Special</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="special">
+                        <img src="DRINK.jpg" alt="Special Dessert">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Royal Kulfi Falooda</h3>
+                                <span class="price">₹160</span>
+                            </div>
+                            <p>Kulfi with falooda noodles, rose syrup, and nuts</p>
+                            <span class="category-label">Special</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item" data-category="special">
+                        <img src="mot.jpg" alt="Special Drink">
+                        <div class="menu-item-content">
+                            <div class="menu-item-title">
+                                <h3>Spice Garden Special Mocktail</h3>
+                                <span class="price">₹150</span>
+                            </div>
+                            <p>Exclusive blend of seasonal fruits and herbs</p>
+                            <span class="category-label">Special</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Login -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us & Login</h2>
+                <p>Get in touch with us or login to your account</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Our Information</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Bus Stand, Sultanpur</p>
+                        <p><i class="fas fa-phone"></i> 7379447232</p>
+                        <p><i class="fas fa-envelope"></i> info@spicegarden.com</p>
+                        <p><i class="fas fa-clock"></i> Open: 11:00 AM - 11:00 PM</p>
+                    </div>
+                    <h3>Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-x"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="login-form">
+                    <h3>Member Login</h3>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-options">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                            <a href="#" style="color: #2faaf7;">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Login</button>
+                        <p style="text-align: center; margin-top: 20px;">
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Spice Garden offers a multi-cuisine dining experience with a focus on exceptional cuisine, impeccable service, and a warm ambiance.</p>
+                </div>
+                <div class="footer-section">
+                    
+                    <div class="footer-links">
+                        <ul>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="footer-contact">
+                        <span><i class="fas fa-map-marker-alt"></i> 123 Bus Stand, Sultanpur</span>
+                        <span><i class="fas fa-phone"></i> 7379447232</span>
+                        <span><i class="fas fa-envelope"></i> info@spicegarden.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                 <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Spice Garden. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                menuItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                alert('Login successful! Redirecting to your dashboard...');
+               
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+    </script>
+</body>
+</html>
